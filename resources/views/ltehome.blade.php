@@ -54,7 +54,6 @@
     </nav>
     
     <!--시작 페이지-->
-    
     <header>
         <div class="header-content">
             <div class="header-content-inner">
@@ -86,8 +85,8 @@
     </section>
     
     <!--정현이 test-->
-    <section id="test">
-        <?php
+    <!--<section id="test">-->
+         <?php
             //dump 찍기
             //echo var_dump($newSubjectsForOneGrade).'<br><br>';
             //echo var_dump($subjectsForOneGrade).'<br><br>';
@@ -119,8 +118,8 @@
                     echo '<br>';
                 }
             }*/
-        ?>
-    </section>
+       ?>
+    <!--</section>-->
     
     <!--강의목록-->
     <section id="services">
@@ -151,52 +150,18 @@
                         // }
                     // }
                     // returnSubnum($subjectsForOwnGrade);
-                        
-                    /*foreach ($subjectsForOneGrade as $subjectForOneGrade) {
-                        echo "<tr>";
-                            echo "<td><input type='checkbox' name='subject' value='".left($subjectForOneGrade->subnum, 7)."'/></td>";
-                            echo "<td>".$subjectForOneGrade->subname."</td>";
-                        echo "</tr>";
-                    }*/
-                    
-                    foreach ($subjectsForOneGrade as $key=>$subjectForOneGrade){
-                        $newSubjectsForOneGrade = array();//배열 선언
-                        //echo var_dump($anotherValue->subname);
-                        //결국 모든걸 포기하였다.
-                        if($key == 0){
+                    $test = [];
+                    foreach ($subjectsForOneGrade as $subjectForOneGrade) {
+                        if($test != $subjectForOneGrade->subname){
                             echo "<tr>";
                                 echo "<td><input type='checkbox' name='subject' value='".left($subjectForOneGrade->subnum, 7)."'/></td>";
+                                
                                 echo "<td>".$subjectForOneGrade->subname."</td>";
+                                
                             echo "</tr>";
-                            //array_push($newSubjectsForOneGrade, $anotherValue->subname);//값을 배열에 넣기
-                            //var_dump($newSubjectsForOneGrade);
-                            //echo '<br>';
-                        }
-                        else if($key == 5){
-                            echo "<tr>";
-                                    echo "<td><input type='checkbox' name='subject' value='".left($subjectForOneGrade->subnum, 7)."'/></td>";
-                                    echo "<td>".$subjectForOneGrade->subname."</td>";
-                            echo "</tr>";
-                            //array_push($newSubjectsForOneGrade, $anotherValue->subname);//값을 배열에 넣기
-                            //var_dump($newSubjectsForOneGrade);
-                            //echo '<br>';
-                        }
-                        else if($key == 6){
-                            echo "<tr>";
-                                    echo "<td><input type='checkbox' name='subject' value='".left($subjectForOneGrade->subnum, 7)."'/></td>";
-                                    echo "<td>".$subjectForOneGrade->subname."</td>";
-                            echo "</tr>";
-                            //array_push($newSubjectsForOneGrade, $anotherValue->subname);//값을 배열에 넣기
-                            //var_dump($newSubjectsForOneGrade);
-                            //echo '<br>';
+                            $test = $subjectForOneGrade->subname;
                         }
                     }
-                    // foreach($subjectsForOneGrade as $subjectForOneGrade) {
-                    //     echo "<td>".$subjectForOneGrade->subname."</td>";
-                    // }
-                    // foreach($subnumsForOneGrade as $subnumForOneGrade) {
-                    //     echo "<td>".$subnumForOneGrade->subnum."</td>";
-                    // }
                     ?>
                     
                    </tbody>
@@ -214,10 +179,13 @@
                    <tbody>
                     <?php
                     foreach ($subjectsForTwoGrade as $subjectForTwoGrade) {
-                        echo "<tr>";
-                            echo "<td><input type='checkbox' name='subject' value='".left($subjectForTwoGrade->subnum, 7)."'/></td>";
-                            echo "<td>".$subjectForTwoGrade->subname."</td>";
-                        echo "</tr>";
+                        if($test != $subjectForTwoGrade->subname){
+                            echo "<tr>";
+                                echo "<td><input type='checkbox' name='subject' value='".left($subjectForTwoGrade->subnum, 7)."'/></td>";
+                                echo "<td>".$subjectForTwoGrade->subname."</td>";
+                            echo "</tr>";
+                            $test = $subjectForTwoGrade->subname;
+                        }
                     }
                     ?>
                    </tbody>
@@ -235,10 +203,13 @@
                    <tbody>
                     <?php
                     foreach ($subjectsForThreeGrade as $subjectForThreeGrade) {
-                        echo "<tr>";
-                            echo "<td><input type='checkbox' name='subject' value='".left($subjectForThreeGrade->subnum, 7)."'/></td>";
-                            echo "<td>".$subjectForThreeGrade->subname."</td>";
-                        echo "</tr>";
+                        if($test != $subjectForThreeGrade->subname){
+                            echo "<tr>";
+                                echo "<td><input type='checkbox' name='subject' value='".left($subjectForThreeGrade->subnum, 7)."'/></td>";
+                                echo "<td>".$subjectForThreeGrade->subname."</td>";
+                            echo "</tr>";
+                            $test = $subjectForThreeGrade->subname;
+                        }
                     }
                     ?>
                    </tbody>
@@ -256,10 +227,13 @@
                    <tbody>
                     <?php
                     foreach ($subjectsForFourGrade as $subjectForFourGrade) {
-                        echo "<tr>";
-                            echo "<td><input type='checkbox' name='subject' value='".left($subjectForFourGrade->subnum, 7)."'/></td>";
-                            echo "<td>".$subjectForFourGrade->subname."</td>";
-                        echo "</tr>";
+                        if($test != $subjectForFourGrade->subname){
+                            echo "<tr>";
+                                echo "<td><input type='checkbox' name='subject' value='".left($subjectForFourGrade->subnum, 7)."'/></td>";
+                                echo "<td>".$subjectForFourGrade->subname."</td>";
+                            echo "</tr>";
+                            $test = $subjectForFourGrade->subname;
+                        }
                     }
                     ?>
                    </tbody>
@@ -341,17 +315,26 @@
                        </thead>
                        <tbody>
                          <?php
-                         for($i=1; $i<=24; $i++){
-                           echo "<tr>";
-                           echo "<td>".$i."</td>";
-                           echo "<td></td>";    //월
-                           echo "<td></td>";    //화
-                           echo "<td></td>";    //수
-                           echo "<td></td>";    //목
-                           echo "<td></td>";    //금
-                           echo "<td></td>";    //토
-                           echo "</tr>";
-                         }
+                        //  for($i=0;$i<count($midbuf);$i++){
+                        //      $temp=$midbuf[$i];
+                        //      $reverse=array();
+                        //      for($l=0;$l<$periodCount;$l++){
+                        //          for($j=0;$j<dayCount;$j++){
+                        //              $reverse[$l][$j]=$temp[$j][$l];
+                        //          }
+                        //      }
+                        //  }
+                        //  for($i=1; $i<=24; $i++){
+                        //   echo "<tr>";
+                        //   echo "<td>".$i."</td>";
+                        //   echo "<td></td>";    //월
+                        //   echo "<td></td>";    //화
+                        //   echo "<td></td>";    //수
+                        //   echo "<td></td>";    //목
+                        //   echo "<td></td>";    //금
+                        //   echo "<td></td>";    //토
+                        //   echo "</tr>";
+                        //  }
                          ?>
                        </tbody>
                      </table>
@@ -409,6 +392,7 @@
 /*global $*/
 
 // Ajax 통신 방식 적용
+/*
 function checkedSubject(){
     // name이 같은 체크박스의 값들을 배열에 담는다.
     var checkboxValues = [];
@@ -417,7 +401,31 @@ function checkedSubject(){
     });
 
     $.ajax({
-        url:"test.php",
+        url:"checkboxValue.php",
+        type:'POST',
+        data: ({
+            subject: checkboxValues
+        }),
+        success:function(data){
+            $("#show").text("선택한 과목: "+data)
+        },
+        error:function(jqXHR, textStatus, errorThrOne){
+            alert("에러 발생 \n" + textStatus + " : " + errorThrOne);
+            window.self.close();
+        }
+    });
+}*/
+
+
+function checkedSubject(){
+    // name이 같은 체크박스의 값들을 배열에 담는다.
+    var checkboxValues = [];
+    $("input[name='subject']:checked").each(function(i) {
+        checkboxValues.push($(this).val());
+    });
+
+    $.ajax({
+        url:"checkboxValue.php",
         type:'POST',
         data: ({
             subject: checkboxValues
@@ -432,6 +440,7 @@ function checkedSubject(){
     });
 }
 
+/*
 function addWanted(no, name, score, time, dayTimeRoom, prof, etc) {
   $('<tr />').append(
     $('<td />').text(no),           // 학수번호
@@ -525,15 +534,6 @@ $(document).ready(function () {
         var time = Number(form.find("#time").val());
         var cls=Number(form.find("#class").val());
         var weekClassRoom = week + cls + "-" + (time + cls) + (room == "" ? "" : "(" + room + ")");
-        
-        // var no = 'ICE1001-001';
-        // var color = '';
-        // var name = '정보통신입문';
-        // var room = '하-232';
-        // var week = '수';
-        // var time = '3';
-        // var cls = '하-232';
-        // var weekClassRoom = week + cls + "-" + (time + cls) + (room == "" ? "" : "(" + room + ")");
 
         if (find.size() > 0) {
             color = $("#timeTable .layer:contains(" + no + "):first").css("background-color");
@@ -543,23 +543,23 @@ $(document).ready(function () {
         } else if (color == "")
             color = colorArr.pop();
         if (false == addLayer(
-            ["월", "화", "수", "목", "금"].indexOf(week),
+            ["월", "화", "수", "목", "금", "토"].indexOf(week),
             cls,
             time,
             color,
             no+" "+name+" "+room
         ))
-            colorArr.push(color);
-        //else {
-            if (find.size() == 0)
-                addWanted(no, name, form.find("#score").val(), time,
-                    weekClassRoom, form.find("#prof").val(), form.find("#etc").val());
-        //}
-        form.find("input").val("")
-            [0].focus();
+            // colorArr.push(color);
+        // //else {
+        //     if (find.size() == 0)
+        //         addWanted(no, name, form.find("#score").val(), time,
+        //             weekClassRoom, form.find("#prof").val(), form.find("#etc").val());
+        // //}
+        // form.find("input").val("")
+            // [0].focus();
         return false;
     });
     //setTimeout(loadTest, 500);
 });
-
+*/
 </script>
